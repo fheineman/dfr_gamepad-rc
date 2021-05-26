@@ -7,10 +7,12 @@ pins.setPull(DigitalPin.P14, PinPullMode.PullNone)
 pins.setPull(DigitalPin.P16, PinPullMode.PullNone)
 music.playTone(262, music.beat(BeatFraction.Whole))
 basic.forever(function () {
-    joyH = pins.analogReadPin(AnalogPin.P1)
-    joyV = pins.analogReadPin(AnalogPin.P2)
-    radio.sendValue("joyH", joyH)
-    radio.sendValue("joyV", joyV)
+    if (joyH != pins.analogReadPin(AnalogPin.P1) || joyV != pins.analogReadPin(AnalogPin.P2)) {
+        joyH = pins.analogReadPin(AnalogPin.P1)
+        joyV = pins.analogReadPin(AnalogPin.P2)
+        radio.sendValue("joyH", joyH)
+        radio.sendValue("joyV", joyV)
+    }
 })
 basic.forever(function () {
     if (input.buttonIsPressed(Button.A)) {
