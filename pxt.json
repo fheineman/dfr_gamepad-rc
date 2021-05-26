@@ -1,5 +1,6 @@
 {
     "name": "DFR_Gamepad-RC",
+    "version": "0.1.0",
     "description": "",
     "dependencies": {
         "core": "*",
